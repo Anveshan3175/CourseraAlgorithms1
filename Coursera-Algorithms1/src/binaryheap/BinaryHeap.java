@@ -12,6 +12,24 @@ public class BinaryHeap<Key extends Comparable<Key>> { // its like T extends Com
 		currIndex = 0;  
 	}
 	
+	public Key delMax(){
+		
+		Key k = items[1];
+		exchange(1,currIndex--);
+		sink(1);
+		items[currIndex+1] = null; // here are not incrementing the currentIndex
+		return k;
+	}
+	
+	private void sink(int k){
+		while (2 * k <= currIndex){
+			int j = 2 * k;
+			if(j < currIndex && less(j,j+1)) j = j+1;
+			if(!less(k,j)) break;
+			exchange(k,j);
+			k = j;
+		}
+	}
 	
 	public void insert(Key k){
 		items[++currIndex] = k;
