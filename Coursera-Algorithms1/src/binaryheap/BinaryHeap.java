@@ -12,6 +12,57 @@ public class BinaryHeap<Key extends Comparable<Key>> { // its like T extends Com
 		currIndex = 0;  
 	}
 	
+	// You pass an array, the method will form proper Binary heap and sort it.
+	public void sort(Comparable[] pq){
+		int N = pq.length;
+		
+		for(int k = N/2; k > 1; k--){
+			sink(pq,k,N);
+		}
+		while(N > 1){
+			exchange(pq, 1, N);
+			sink(pq,1,--N);
+		}
+	}
+	
+	private void exchange(Comparable[] pq, int i, int j){
+		Comparable temp = pq[i];
+		pq[i] = pq[j] ;
+		pq[j] = temp;
+	}
+	
+	// FInd out which of the two childs is bigger ad swap it with root
+	private void sink(Comparable[] pq, int k,int high){
+		while (2 * k <= high){
+			int j = 2 * k;
+			if(j < high && less(j,j+1)) j = j+1;
+			if(!less(k,j)) break;
+			exchange(k,j);
+			k = j;
+		}
+	}
+	
+	
+	
+	public void sort(){
+		int high = currIndex;
+		
+		while(high >= 1){
+			exchange(high,1);
+			sinkForSort(1,--high);
+		}
+	}
+	
+	private void sinkForSort(int k,int high){
+		while (2 * k <= high){
+			int j = 2 * k;
+			if(j < high && less(j,j+1)) j = j+1;
+			if(!less(k,j)) break;
+			exchange(k,j);
+			k = j;
+		}
+	}
+	
 	public Key delMax(){
 		
 		Key k = items[1];

@@ -25,7 +25,11 @@ public class BinaryHeapJUnit {
 		bh.insert(16);
 		bh.insert(62);
 		bh.insert(81);
+		bh.insert(24);
 		bh.delMax();
+		bh.insert(49);
+		System.out.println(bh);
+		bh.sort();
 		System.out.println(bh);
 	}
 
