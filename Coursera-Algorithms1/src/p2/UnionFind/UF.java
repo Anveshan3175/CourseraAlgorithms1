@@ -2,6 +2,7 @@ package p2.UnionFind;
 
 // https://github.com/aistrate/AlgorithmsSedgewick/tree/master/1-Fundamentals/1-5-UnionFind
 // http://algs4.cs.princeton.edu/code/
+// http://grepcode.com/snapshot/repo1.maven.org/maven2/com.googlecode.princeton-java-algorithms/algorithms/4.0.0/
 public class UF {
 	
 	UF(int N){
