@@ -1,5 +1,8 @@
 package p2.UnionFind;
 
+import java.io.File;
+import java.util.Arrays;
+import java.util.Scanner;
 
 /*  1. The objects for which connectivity is to be find are integers in this implementation.
  *  2. The integers(objects) are indices of array.
@@ -14,6 +17,7 @@ public class WeightedQuickUnionUF {
 	
 	WeightedQuickUnionUF(int N){
 		id = new int[N];
+		size = new int[N];
 		for(int i = 0; i < N; i++){
 			id[i] = i;
 			size[i] = 1;  // Initially size is 1 as each element is root of itself.
@@ -33,7 +37,7 @@ public class WeightedQuickUnionUF {
 	/* Two objects are connected if they have same root
 	 * The above is the condition for Quick Union
 	 */
-	public boolean find(int p, int q){
+	public boolean connected(int p, int q){
 		return root(p) == root(q);
 	}
 	
@@ -57,12 +61,62 @@ public class WeightedQuickUnionUF {
 			id[rootQ] = rootP;
 			size[rootP] +=  size[rootQ];
 		}
+		
+		System.out.println("Current status of array : "+Arrays.toString(id));
 	}
 	
 	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
+	// client code 
+			public static void main(String[] args) {
+				Scanner scan = null;
+				try {
+					//scan = new Scanner(new File("tinyUF.txt"));
+					scan = new Scanner(new File("C://Workspace//GitHub//CourseraAlgorithms1//Coursera-Algorithms1//src//p2//UnionFind//tinyUF.txt"));
+					
+				} catch (Exception ex) {
+					System.out.println("Could not find file");
+				}
+				
+				//solve dynamic connectivity problem
+				int N = scan.nextInt();// read number of sites.
+				System.out.println("Array length is: " + N);
+				
+				WeightedQuickUnionUF uf = new WeightedQuickUnionUF(N);
+				System.out.println("Inital status of array : "+Arrays.toString(uf.id) +"\n");
+				
+				while (scan.hasNext()){
+					 int p = scan.nextInt();
+					 int q = scan.nextInt(); //read pair to connect
+					 System.out.print("Pair is ("+p+","+q+")  ");
+					 if (uf.connected(p, q)){
+						 System.out.println("They are already connected");
+						 continue; //ignore if connected
+					 }
+					 
+					 uf.union(p, q); //combine components
+				}
+				scan.close();
+				System.out.println();
+				System.out.println("Final status of array : "+Arrays.toString(uf.id));
+			}
+			
+			/*
+			 * Array length is: 10
+				Inital status of array : [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+				
+				Pair is (4,3)  Current status of array : [0, 1, 2, 4, 4, 5, 6, 7, 8, 9]
+				Pair is (3,8)  Current status of array : [0, 1, 2, 4, 4, 5, 6, 7, 4, 9]
+				Pair is (6,5)  Current status of array : [0, 1, 2, 4, 4, 6, 6, 7, 4, 9]
+				Pair is (9,4)  Current status of array : [0, 1, 2, 4, 4, 6, 6, 7, 4, 4]
+				Pair is (2,1)  Current status of array : [0, 2, 2, 4, 4, 6, 6, 7, 4, 4]
+				Pair is (8,9)  They are already connected
+				Pair is (5,0)  Current status of array : [6, 2, 2, 4, 4, 6, 6, 7, 4, 4]
+				Pair is (7,2)  Current status of array : [6, 2, 2, 4, 4, 6, 6, 2, 4, 4]
+				Pair is (6,1)  Current status of array : [6, 2, 6, 4, 4, 6, 6, 2, 4, 4]
+				Pair is (1,0)  They are already connected
+				Pair is (6,7)  They are already connected
+				
+				Final status of array : [6, 2, 6, 4, 4, 6, 6, 2, 4, 4]
+			 */
 
 }
