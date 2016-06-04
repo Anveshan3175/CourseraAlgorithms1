@@ -83,4 +83,23 @@ public class QuickFindUF {
 		System.out.println("Final status of array : "+Arrays.toString(uf.id));
 	}
 	
+	/*
+	 * Array length is: 10
+		Inital status of array : [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+		
+		Pair is (4,3)  Current status of array : [0, 1, 2, 3, 3, 5, 6, 7, 8, 9]
+		Pair is (3,8)  Current status of array : [0, 1, 2, 8, 8, 5, 6, 7, 8, 9]
+		Pair is (6,5)  Current status of array : [0, 1, 2, 8, 8, 5, 5, 7, 8, 9]
+		Pair is (9,4)  Current status of array : [0, 1, 2, 8, 8, 5, 5, 7, 8, 8]
+		Pair is (2,1)  Current status of array : [0, 1, 1, 8, 8, 5, 5, 7, 8, 8]
+		Pair is (8,9)  They are already connected
+		Pair is (5,0)  Current status of array : [0, 1, 1, 8, 8, 0, 0, 7, 8, 8]
+		Pair is (7,2)  Current status of array : [0, 1, 1, 8, 8, 0, 0, 1, 8, 8]
+		Pair is (6,1)  Current status of array : [1, 1, 1, 8, 8, 1, 1, 1, 8, 8]
+		Pair is (1,0)  They are already connected
+		Pair is (6,7)  They are already connected
+		
+		Final status of array : [1, 1, 1, 8, 8, 1, 1, 1, 8, 8]
+	 */
+	
 }
