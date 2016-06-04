@@ -1,5 +1,9 @@
 package p2.UnionFind;
 
+import java.io.File;
+import java.util.Arrays;
+import java.util.Scanner;
+
 // Execution : java QuickFindUF < input.txt
 
 // UnionFind uses data structure which is Array internally
@@ -40,28 +44,43 @@ public class QuickFindUF {
 				if(id[i] == indexP) id[i] = indexQ; // At most N access each time. One for compare and one for assignment.
 			}
 		}
+		
+		System.out.println("Current status of array : "+Arrays.toString(id));
 	}
 	
 	
 	// client code 
-		public static void main(String[] args) {
-			// TODO Auto-generated method stub
-
+	public static void main(String[] args) {
+		Scanner scan = null;
+		try {
+			//scan = new Scanner(new File("tinyUF.txt"));
+			scan = new Scanner(new File("C://Workspace//GitHub//CourseraAlgorithms1//Coursera-Algorithms1//src//p2//UnionFind//tinyUF.txt"));
 			
-			int N = StdIn.readInt();
-			
-			UF uf = new UF(N);
-			
-			while(!StdIn.isEmpty()){
-				
-				int p = StdIn.readInt();
-				int q = StdIn.readInt();
-				
-				if(!uf.connected(p,q)){
-					uf.union(p, q);
-					StdOut.println(p+"  "+q);
-				}
-			}
+		} catch (Exception ex) {
+			System.out.println("Could not find file");
 		}
+		
+		//solve dynamic connectivity problem
+		int N = scan.nextInt();// read number of sites.
+		System.out.println("Array length is: " + N);
+		
+		QuickFindUF uf = new QuickFindUF(N);
+		System.out.println("Inital status of array : "+Arrays.toString(uf.id) +"\n");
+		
+		while (scan.hasNext()){
+			 int p = scan.nextInt();
+			 int q = scan.nextInt(); //read pair to connect
+			 System.out.print("Pair is ("+p+","+q+")  ");
+			 if (uf.connected(p, q)){
+				 System.out.println("They are already connected");
+				 continue; //ignore if connected
+			 }
+			 
+			 uf.union(p, q); //combine components
+		}
+		scan.close();
+		System.out.println();
+		System.out.println("Final status of array : "+Arrays.toString(uf.id));
+	}
 	
 }
