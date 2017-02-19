@@ -1,4 +1,4 @@
 Notes :
 
-Union-Find Data Type is an API. There are various implementations
+Union-Find Data Type is an API. There are various implementations.
 
