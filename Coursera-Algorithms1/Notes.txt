@@ -9,3 +9,4 @@ Union-Find Data Type is an API. There are various implementations.
      Union : Join two subsets into a single subset. Connect two ojects.
 2.Dynamic Connectivity structure is a data structure that dynamically maintains information about the conncted components
 of a graph.
+3.Dynamic Connectivity problem is model of Union Find problem. Two classic algorithms, Quick Find and Quick Union can be solutions for dynamic connectivity problem
