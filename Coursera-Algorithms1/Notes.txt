@@ -7,3 +7,5 @@ Union-Find Data Type is an API. There are various implementations.
   -> The two operations are Find and Union.
      Find : Determine which subset a particular element is in . This can be used for determining if two elements are in the same subset. Or, if two elements are connected by path ?
      Union : Join two subsets into a single subset. Connect two ojects.
+2.Dynamic Connectivity structure is a data structure that dynamically maintains information about the conncted components
+of a graph.
