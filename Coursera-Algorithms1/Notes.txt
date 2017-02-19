@@ -1,4 +1,7 @@
 Notes :
 
 Union-Find Data Type is an API. There are various implementations.
+1.Union-Find  algorithm ("Algorithm"),is an algorithm that performs two useful operations on Disjoint-Set Data Structure.
+  -> A disjoint-set data structure is a data structure that keeps track of a set of elements partitioned into a number of disjoint(non-overlapping) subsets.
+  -> Two sets are disjoint if their intersection is null. {1,2,3},{1,5} are not disjoint but {1,5},{7,8} are .
 
