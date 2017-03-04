@@ -6,7 +6,19 @@ Union-Find Data Type is an API. There are various implementations.
   -> Two sets are disjoint if their intersection is null. {1,2,3},{1,5} are not disjoint but {1,5},{7,8} are .
   -> The two operations are Find and Union.
      Find : Determine which subset a particular element is in . This can be used for determining if two elements are in the same subset. Or, if two elements are connected by path ?
-     Union : Join two subsets into a single subset. Connect two ojects.
-2.Dynamic Connectivity structure is a data structure that dynamically maintains information about the conncted components
+     Union : Join two subsets into a single subset. Connect two objects.
+2.Dynamic Connectivity structure is a data structure that dynamically maintains information about the connected components
 of a graph.
 3.Dynamic Connectivity problem is model of Union Find problem. Two classic algorithms, Quick Find and Quick Union can be solutions for dynamic connectivity problem
+
+
+Both Quick Find and Quick Union are used to solve Dynamic Connectivity problem.They are not that effective.
+
+In weighted Quick Union, any tree size atleast doubles . And it can only happen log(N) times..
+
+
+Q: Given a social network containing N members and a log file containing M timestamps at which times pairs of members formed friendships, design an algorithm to determine 
+the earliest time at which all members are connected (i.e., every member is a friend of a friend of a friend … of a friend). Assume that the log file is sorted by timestamp and 
+that friendship is an equivalence relation. The running time of your algorithm should be MlogN or better and use extra space proportional to N.
+
+https://jznest.wordpress.com/2014/02/15/algorithms-part-i-social-network-connectivity-with-union-find/ 
