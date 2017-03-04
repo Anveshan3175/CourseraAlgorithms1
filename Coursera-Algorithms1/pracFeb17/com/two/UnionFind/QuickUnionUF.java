@@ -25,11 +25,18 @@ public class QuickUnionUF implements UF {
 		return (root(p) == root(q));
 	}
 	
-	
-	private int root(int p){
+	// Using recursion
+	private int root1(int p){
 		if(id[p] == p)
 			return p;
 		return root(id[p]);
+	}
+	
+	// Using loop
+	private int root(int p){
+		while(id[p] != p)
+			p = id[p];
+		return p;
 	}
 	
 	public static void main(String[] args){
