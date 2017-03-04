@@ -8,7 +8,7 @@ public class QuickUnionUF implements UF {
 
 	QuickUnionUF(int N) {
 		id = new int[N];
-		for (int i = 0; i < N; i++) {
+		for (int i = 0; i < N; i++) {  // N array access
 			id[i] = i;
 		}
 	}
@@ -16,24 +16,27 @@ public class QuickUnionUF implements UF {
 	@Override
 	public void union(int p, int q) {
 		// TODO Auto-generated method stub
-		id[root(p)] = root(q);
+		//id[root(p)] = root(q);
+		int i = root(p);
+		int j = root(q);
+		id[i] = j;
 	}
 
 	@Override
 	public boolean connected(int p, int q) {
 		// TODO Auto-generated method stub
-		return (root(p) == root(q));
+		return (root(p) == root(q));   // p and q array access
 	}
 	
 	// Using recursion
 	private int root1(int p){
 		if(id[p] == p)
-			return p;
+			return p;				
 		return root(id[p]);
 	}
 	
 	// Using loop
-	private int root(int p){
+	private int root(int p){     // p Array access
 		while(id[p] != p)
 			p = id[p];
 		return p;
